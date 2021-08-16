@@ -30,7 +30,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    msg = message.content
+    msg: str = message.content
 
     msg_ola = ["Olá seja bem vindo !", "E aí !", "Opa ! Tudo bem ?", "Boa tarde meu camarada",
                "Seja bem vindo, churrasco de tatu e pudim de tamanduá todos os sabádos e strogonoff de gato-palheiro com feijoada de de louva-deus aos domingos, não deixamos sobras.",
@@ -39,37 +39,31 @@ async def on_message(message):
                "Sério que você apareceu só agora ?", "Estava esperando por você ;)",
                "Achei que você não viria até aqui, estou surpreso", "Você por aqui ? Sus..."]
 
-    '''if message.content.startswith("$update"):
-        try:
 
-            await message.reply("O que você gostaria de colocar ?")
-            update_ola = await client.wait_for("message")
-            update_curiosidade = await client.wait_for("message")
-            update_memes = await client.wait_for("message")
-            update_vmemes = await client.wait_for("message")
 
+    if message.content.startswith("$update"):
+            update = msg.splitlines()
+            pt1 = update[1]
+            pt2 = update[2]
+            pt3 = update[3]
+            pt4 = update[4]
             db = sqlite3.connect("bot.db")
             cursor = db.cursor()
-            cursor.execute(f"INSERT INTO bot(ola, curiosidade, memes, vmemes) VALUES (?,?,?,?)", (update_ola, update_curiosidade, update_memes, update_vmemes))
+            cursor.execute(f"INSERT INTO bot(ola, curiosidade, memes, vmemes) VALUES (?,?,?,?)",(pt1,pt2,pt3,pt4))
             db.commit()
             db.close()
             await message.reply("Cadastrado com Sucesso")
-        except:
-            await message.reply("Deu ruim, mlr esperar o adm me atualizar")'''
-
-    if message.content.startswith("$insert_ola"):
-        try:
-            update = msg.split("$insert_ola ",1)[1]
-            db = sqlite3.connect("bot.db")
-            cursor = db.cursor()
-            cursor.execute(f"INSERT INTO bot(ola) VALUES (?)",(update,))
-            db.commit()
-            db.close()
-            await message.reply("Cadastrado com Sucesso")
-        except: await message.reply("Deu errado tá man, depois eu peço pro adm me consertar")
 
     if message.content.startswith("$ola"):
         await message.reply(random.choice(msg_ola))
+
+    if message.content.startswith("$oladb"):
+        db = sqlite3.connect("bot.db")
+        cursor = db.cursor()
+        cursor.execute("SELECT ola FROM bot ORDER BY RANDOM() LIMIT 1")
+        db_response = cursor.fetchone()
+        await message.reply(db_response[0])
+
 
     elif message.content.startswith("$amogus"):
         await message.reply("Sussy Baka ? 😳")
@@ -95,18 +89,6 @@ async def on_message(message):
                         "A única comida que não apodrece é o mel.", "Leonardo da Vinci inventou a tesoura.", "Existem aproximadamente 5, 000, 000, 000, 000, 000, 000, 000, 000, 000,000 de bactérias vivendo no planeta Terra.",
                         "A velocidade de rotação da Terra é de 1674.4 km/h."]
         await message.channel.send(random.choice(curiosidades))
-
-    if message.content.startswith("$insert_curiosidade"):
-        try:
-            update = msg.split("$insert_curiosidade ", 1)[1]
-            db = sqlite3.connect("bot.db")
-            cursor = db.cursor()
-            cursor.execute(f"INSERT INTO bot(curiosidade) VALUES (?)", (update,))
-            db.commit()
-            db.close()
-            await message.reply("Cadastrado com Sucesso")
-        except:
-            await message.reply("Deu errado tá man, depois eu peço pro adm me consertar")
 
     elif message.content.startswith("$noticia"):
         canais_de_noticia = ["https://www.globo.com/", "https://www.uol.com.br/", "https://www.terra.com.br/",
@@ -137,16 +119,6 @@ async def on_message(message):
                  ]
         await message.channel.send(random.choice(memes))
 
-    if message.content.startswith("$insert_memes"):
-        try:
-            update = msg.split("$insert_memes ", 1)[1]
-            db = sqlite3.connect("bot.db")
-            cursor = db.cursor()
-            cursor.execute(f"INSERT INTO bot(memes) VALUES (?)", (update,))
-            db.commit()
-            db.close()
-            await message.reply("Cadastrado com Sucesso")
-        except: await message.reply("Deu errado man, depois eu peço pro adm me consertar")
 
 
     elif message.content.startswith("$tchau"):
@@ -173,17 +145,6 @@ async def on_message(message):
                   "https://www.youtube.com/watch?v=jHw76mFvVUM", "https://www.youtube.com/channel/UCCINPOg76lH0tCC5aEur2BA",
                   "https://www.youtube.com/watch?v=ANx5yMRCFbU"]
         await message.channel.send(random.choice(memesv))
-
-    if message.content.startswith("$insert_vmemes"):
-        try:
-            update = msg.split("$insert_vmemes ", 1)[1]
-            db = sqlite3.connect("bot.db")
-            cursor = db.cursor()
-            cursor.execute(f"INSERT INTO bot(vmemes) VALUES (?)", (update,))
-            db.commit()
-            db.close()
-            await message.reply("Cadastrado com Sucesso")
-        except: await message.reply("Deu errado man, depois eu peço pro adm me consertar")
 
 
 
