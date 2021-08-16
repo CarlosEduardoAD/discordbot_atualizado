@@ -199,7 +199,7 @@ async def on_message(message):
         pass
 
 
-TOKEN = "ODYwMjQ2MzA2NDI5ODYxODg4.YN4czg.v-UX88PDi9ExO746e1apZ9H6E18"
+TOKEN = "ODYwMjQ2MzA2NDI5ODYxODg4.YN4czg.LP1QmvgT62_obVKcHYVih7xYTxo"
 
 if __name__ == '__main__':
     client.run(TOKEN)
