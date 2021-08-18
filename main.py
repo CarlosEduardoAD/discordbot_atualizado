@@ -47,6 +47,38 @@ async def on_message(message):
             await message.reply("Cadastrado com Sucesso")
         except: await message.reply("Deu errado man, só lembrando que você tem que botar uma msg de olá, uma curiosidade, um meme e um video de meme, nem menos nem mais.")
 
+    if message.content.startswith("$ver_ola"):
+        db = sqlite3.connect("bot.db")
+        cursor = db.cursor()
+        cursor.execute("SELECT ola FROM bot")
+        await message.channel.send(cursor.fetchall())
+        db.commit()
+        db.close()
+
+    if message.content.startswith("$ver_curiosidade"):
+        db = sqlite3.connect("bot.db")
+        cursor = db.cursor()
+        cursor.execute("SELECT curiosidade FROM bot")
+        await message.channel.send(cursor.fetchall())
+        db.commit()
+        db.close()
+
+    if message.content.startswith("$ver_memes"):
+        db = sqlite3.connect("bot.db")
+        cursor = db.cursor()
+        cursor.execute("SELECT memes FROM bot")
+        await message.channel.send(cursor.fetchall())
+        db.commit()
+        db.close()
+
+    if message.content.startswith("$ver_vmemes"):
+        db = sqlite3.connect("bot.db")
+        cursor = db.cursor()
+        cursor.execute("SELECT vmemes FROM bot")
+        await message.channel.send(cursor.fetchall())
+        db.commit()
+        db.close()
+
     if message.content.startswith("$ola"):
 
         db = sqlite3.connect("bot.db")
@@ -127,8 +159,6 @@ async def on_message(message):
 '''@client.command()
 async def kick(msg, member = discord.Member, *, reason = None):
     await member.kick(reason=reason)'''
-
-#Função que eu ainda pretendo colocar
 
 
 
