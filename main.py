@@ -4,7 +4,6 @@ from discord.ext import commands
 import random #bibiloteca para randomizar comandos
 import sqlite3 #biblioteca que realiza a conexão com a base de dados do robô
 
-
 client = discord.Client() #Definição do cliente
 intents = discord.Intents.default() #Configuração dos intents
 intents.members = True
@@ -80,7 +79,7 @@ async def on_message(message):
         db.commit()
         db.close()
 
-    if message.content.startswith("$substituir"):
+    if message.content.startswith("$substituir_ola"):
         try:
             update = msg.splitlines()
             s1 = update[1]
@@ -88,6 +87,46 @@ async def on_message(message):
             db = sqlite3.connect("bot.db")
             cursor = db.cursor()
             cursor.execute("UPDATE bot SET ola = (?) WHERE ola = (?)", (s1,s2))
+            db.commit()
+            db.close()
+            await message.reply("atualizado com sucesso")
+        except: await message.reply("Man, eu preciso substituir um trem que existe ne kk, se tu quiser ver as msgs já cadastradas, só digitar $ver_ola")
+
+    if message.content.startswith("$substituir_curiosidade"):
+        try:
+            update = msg.splitlines()
+            s1 = update[1]
+            s2 = update[2]
+            db = sqlite3.connect("bot.db")
+            cursor = db.cursor()
+            cursor.execute("UPDATE bot SET curiosidade = (?) WHERE curiosidade = (?)", (s1,s2))
+            db.commit()
+            db.close()
+            await message.reply("atualizado com sucesso")
+        except: await message.reply("Man, eu preciso substituir um trem que existe ne kk, se tu quiser ver as msgs já cadastradas, só digitar $ver_ola")
+
+        if message.content.startswith("$substituir_meme"):
+            try:
+                update = msg.splitlines()
+                s1 = update[1]
+                s2 = update[2]
+                db = sqlite3.connect("bot.db")
+                cursor = db.cursor()
+                cursor.execute("UPDATE bot SET memes = (?) WHERE memes = (?)", (s1, s2))
+                db.commit()
+                db.close()
+                await message.reply("atualizado com sucesso")
+            except:
+                await message.reply("Man, eu preciso substituir um trem que existe ne kk, se tu quiser ver as msgs já cadastradas, só digitar $ver_ola")
+
+    if message.content.startswith("$substituir_vmeme"):
+        try:
+            update = msg.splitlines()
+            s1 = update[1]
+            s2 = update[2]
+            db = sqlite3.connect("bot.db")
+            cursor = db.cursor()
+            cursor.execute("UPDATE bot SET vmemes = (?) WHERE vmemes = (?)", (s1,s2))
             db.commit()
             db.close()
             await message.reply("atualizado com sucesso")
