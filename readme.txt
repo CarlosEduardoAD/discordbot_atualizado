@@ -26,7 +26,7 @@ it will always be a blank space on the table* , and that can be dificult to solv
 gives me a error each time that I try to send a empty message, which it's quite obvious lol, because he can't send a null value. My solution tho was put
 a update system, which makes the almost the same work, the User will input the message he wants to put and then he will put the one that he wants to update.
 
-*Sql is used for relational databases, if you delete a single cell in a row, this row will have less rows than the other ones, in the end, the relational database wont be relational anymore (keepin' in mind that are elements that are < then the others), I don't know if this is possible with other db paradigms, such as document-oriented (mongodb),
+*Sql is used for relational databases, if you delete a single cell in a row, this row will have less cells than the other ones, in the end, the relational database wont be relational anymore (keepin' in mind that are elements that are < then the others), I don't know if this is possible with other db paradigms, such as document-oriented (mongodb),
 or the graph ones (GraphQL) but i know that you can't do that type of action in sql.
 
 EXAMPLE (PT):
