@@ -44,6 +44,6 @@ That means that I shouldn't use the delete query keepin' in mind your explanatio
 Quick and Short Awnser: nope
 Long Awnser: It depends actually, when you just need to delete something from a table that won't affect any other application (Code, API, cloud functions etc...) you 
              can use it safely, cause at least it won't affect most of the fuctions of your application, the main problem is when you NEED to return values of db -> application,
-             unless that the API/Library/Framework has a catch system to this type of error, you may have some problems with read-errors. I am not a professional programmer
-             (actually i'm a pretty amateur one lol) but I just wanted to share this event that happened with me.
+             unless that the API/Library/Framework has a catch system to this type of error, you may have some problems with the interation between db and code (indepedent of                 the language). 
+             I am not a professional programmer (actually i'm a pretty amateur one lol) but I just wanted to share this event that happened with me.
              
