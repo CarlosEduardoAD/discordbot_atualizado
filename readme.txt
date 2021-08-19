@@ -24,7 +24,7 @@ Why?
 The main problem is that when you use the DELETE query on sql, he will delete the DATA/VALUE on the cell, NOT the cell, this means that 
 it will always be a blank space on the table* , and that can be dificult to solve on the future, keepin' in mind that the own discord API 
 gives me a error each time that I try to send a empty message, which it's quite obvious lol, because he can't send a null value. My solution tho was put
-a update system, which makes the almost the same work, the User will input the message he wants to insert and then change the past one put his input.
+a update system, which makes the almost the same work, the User will input the message he wants to insert and then change the past one with his input.
 
 *Sql is used for relational databases, if you delete a single cell in a row, this row will have less cells than the other ones, in the end, the relational database wont be relational anymore (keepin' in mind that are elements that are < then the others), I don't know if this is possible with other db paradigms, such as document-oriented (mongodb),
 or the graph ones (GraphQL) but i know that you can't do that type of action in sql.
