@@ -18,4 +18,4 @@ DONE:
 ----- Bot structure
 ----- Reply system
 ----- Basic conversation bot -> client and client -> bot
------ SQLite3 datavase
+----- SQLite3 database
