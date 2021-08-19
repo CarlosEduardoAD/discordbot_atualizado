@@ -45,7 +45,7 @@ async def on_message(message):
             cursor.execute(f"INSERT INTO bot(ola, curiosidade, memes, vmemes) VALUES (?,?,?,?)",(pt1,pt2,pt3,pt4)) #Query do sql para realizar a atualização requisitada pelo usuário
             db.commit() #Salva
             db.close() #Fecha a conexão com a base de dados
-            await message.reply("Cadastrado com Sucesso"
+            await message.reply("Cadastrado com Sucesso")
         except: await message.reply("Deu errado man, só lembrando que você tem que botar uma msg de olá, uma curiosidade, um meme e um video de meme, nem menos nem mais.")
 
     if message.content.startswith("$ver_ola"):
@@ -79,6 +79,19 @@ async def on_message(message):
         await message.channel.send(cursor.fetchall())
         db.commit()
         db.close()
+
+    if message.content.startswith("$substituir"):
+        try:
+            update = msg.splitlines()
+            s1 = update[1]
+            s2 = update[2]
+            db = sqlite3.connect("bot.db")
+            cursor = db.cursor()
+            cursor.execute("UPDATE bot SET ola = (?) WHERE ola = (?)", (s1,s2))
+            db.commit()
+            db.close()
+            await message.reply("atualizado com sucesso")
+        except: await message.reply("Man, eu preciso substituir um trem que existe ne kk, se tu quiser ver as msgs já cadastradas, só digitar $ver_ola")
 
     if message.content.startswith("$ola"):
 
