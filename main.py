@@ -32,6 +32,15 @@ async def on_message(message):
 
     msg: str = message.content
 
+    if message.content.startswith("$help"):
+        await message.channel.send('''Ovo te ensina como você pode me usar: 
+        $update: Comando pra atualizar msgs de ola, de curiosidade, de memes e de vmemes (vídeos)
+        $substituir: Comando para substituir alguma das 4 acima, subdividido entre cada categoria
+        $ola: Manda msg de ola
+        $curiosidade(s): Manda uma curiosidade
+        $memes: Manda um meme
+        $vmemes: Manda um vídeo de meme''')
+
     if message.content.startswith("$update"): #Se o usuário digitar o comando, acessar a base de dados para atualizar seus dados
         try:
             update = msg.splitlines() #Quebra de linha estilo Enter (/n)
