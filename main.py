@@ -1,4 +1,6 @@
 #Importação das bibliotecas
+import os
+
 import discord #biblioteca do discord
 from discord.ext import commands
 import random #bibiloteca para randomizar comandos
@@ -217,7 +219,7 @@ async def on_message(message):
     else: #Se caso outra coisa que não está no evento aconteça, apenas mantenha o programa
         pass
 
-TOKEN = "ODYwMjQ2MzA2NDI5ODYxODg4.YN4czg.LP1QmvgT62_obVKcHYVih7xYTxo" #Token de ativação
+TOKEN = os.getenv("DISCORD_BOT_KARL")
 
 if __name__ == '__main__': #Evita a ativação do bot de forma desnecessária
     client.run(TOKEN)
