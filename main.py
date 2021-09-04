@@ -18,11 +18,6 @@ cachorro = ["cachorro", "cão"]
 async def on_ready():
     print("Nós logamos como {0.user}".format(client))
 
-#Evento que sauda a vinda de um novo membro no servidor
-@client.event
-async def on_member_join(member):
-    channel = client.get_channel(860246036009713677)
-    await channel.send(f"Seja bem vindo {member.mention}")
 
 #Eventos centrais, basicamente onde tudo vai acontecer, desde de envio de mensagens até conversação bot -> usuário
 @client.event
@@ -210,9 +205,13 @@ async def on_message(message):
 
         msgs_ajuda = ["O dia de amanhã será melhor que hoje", "Não se preocupe, vai dar tudo certo", "Melhor errar do que não tentar",
         "Você consegue, basta não desistir :)", "Obrigado por fazer o meu dia melhor :)", "Lembre-se, quanto mais sus, melhor", "Não se esqueça, você é único",
-        "Não dá bola pro pessoal do twitter, é só um monte de mongol.", "Se alegre, amanhã é um novo dia", "Eu estou aqui do seu lado :)", "Posso não ser uma pessoa real, mas sou seu amigo"]
+        "Não dá bola pro pessoal do twitter, é só um monte de mongol.", "Se alegre, amanhã é um novo dia", "Eu estou aqui do seu lado :)", "Posso não ser uma pessoa real, mas sou seu amigo", "Tamo aqui pra te ajudar man", "Preocupa não, só comer q melhora"]
 
         await message.reply(random.choice(msgs_ajuda))
+
+    elif message.content.startswith("$info"):
+
+        await message.reply("Eu fui criado pelo grandissísmo sussy baka Karl, vo deixar o github dele caso queria conversar com ele 'https://github.com/Karl-developer/Karl-developer'")
 
     else: #Se caso outra coisa que não está no evento aconteça, apenas mantenha o programa
         pass
