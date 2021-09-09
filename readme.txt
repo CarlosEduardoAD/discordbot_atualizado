@@ -1,6 +1,9 @@
 -- DISCORD BOT --
 
-This project it's done.
+--04/09/2021 PATCH--
+
+A simple info command was put into the bot, to acess it, just type $info.
+Bugs resolution.
 
 What can the sussy bot do ? (besides being sus):
 
